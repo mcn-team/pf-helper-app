@@ -3,6 +3,8 @@ import { Route, Link } from 'react-router-dom'
 import Home from '../home'
 import About from '../about'
 
+import './app.css';
+
 export const App = () => (
   <div>
     <header>
