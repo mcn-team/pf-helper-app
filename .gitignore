@@ -23,6 +23,3 @@ yarn-error.log*
 # IDE Files
 .idea
 .vscode
-
-# Local Files
-public
