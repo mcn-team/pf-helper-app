@@ -6,10 +6,17 @@ div#root {
 
 a,
 a:hover,
-button:hover,
-button:focus,
-button.is-active { color: #63c55f; }
+.button:hover,
+.button:focus,
+.button.is-active {
+  color: #63c55f;
+}
 
+.button:hover,
+.button:focus,
+.button.is-active {
+  border-color: #000;
+}
 input.input,
 textarea.textarea,
 input[disabled].input,
@@ -18,9 +25,8 @@ textarea[disabled].textarea {
   background-color: #282f2f;
 }
 
-button {
+.button {
   background: linear-gradient(#484e55, #3a3f44 60%, #313539) no-repeat;
   color: #c8c8c8;
   border-color: #000;
-  padding: 8px;
 }
