@@ -4,6 +4,8 @@ div#root {
   color: #ddd;
 }
 
+.nav-active { color: #63c55f; }
+
 a,
 a:hover,
 .button:hover,
