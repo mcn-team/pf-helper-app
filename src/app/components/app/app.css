@@ -18,6 +18,7 @@ a:hover,
   border-color: #000;
 }
 input.input,
+select.input,
 textarea.textarea,
 input[disabled].input,
 textarea[disabled].textarea {

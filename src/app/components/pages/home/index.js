@@ -1,17 +1,16 @@
 import React from 'react';
 // import { bindActionCreators } from 'redux';
-// import { connect } from 'react-redux'
+import { connect } from 'react-redux'
 // import { push } from 'react-router-redux'
 
-import { SimpleFormComponent } from '../../commons/simple-form.component';
-
+import { SimpleForm } from '../../commons/simple-form.component';
+import { FieldSelect } from '../../commons/field-select.component';
 import { GamesREST } from '../../../utils/rest/games-rest.utils';
 
-const listFieldContainerStyle = { border: '1px solid #ddd' };
 const DEFAULT_PAGE = 1;
 const DEFAULT_LIMIT = 5;
 
-export class Home extends React.PureComponent {
+class HomePage extends React.PureComponent {
     constructor(props) {
         super(props);
 
@@ -19,6 +18,7 @@ export class Home extends React.PureComponent {
             games: []
         }
     }
+
     async componentDidMount() {
         const response = await GamesREST.list({ page: DEFAULT_PAGE, limit: DEFAULT_LIMIT });
 
@@ -27,28 +27,17 @@ export class Home extends React.PureComponent {
         });
     }
 
-    //TODO: Extract the list container into a component
-    //TODO: Extract the element into a component
+    handleValidate(values) {
+        console.log(values);
+    }
+
     render() {
         const { games } = this.state;
         return (
             <div>
-                <SimpleFormComponent validateLabel="Valider">
-                    <div className="field">
-                        <div className="control">
-                            <label className="label">Sélectionnez une partie</label>
-                            <div style={ listFieldContainerStyle }>
-                                {
-                                    games.map((game, index) => {
-                                        return (
-                                            <p key={ index }>{ game.title }</p>
-                                        )
-                                    })
-                                }
-                            </div>
-                        </div>
-                    </div>
-                </SimpleFormComponent>
+                <SimpleForm isCentered onSubmit={ this.handleValidate.bind(this) } validateLabel="Valider">
+                    <FieldSelect label="Selectionnez une partie..." name="game" choices={ games } />
+                </SimpleForm>
             </div>
         );
     }
@@ -60,7 +49,7 @@ export class Home extends React.PureComponent {
 //     }, dispatch);
 // };
 
-// export default connect(
-//     null,
-//     mapDispatchToProps
-// )(Home);
+export const Home = connect(
+    null,
+    null
+)(HomePage);
